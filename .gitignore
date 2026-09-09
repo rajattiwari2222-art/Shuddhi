@@ -1,0 +1,15 @@
+# Temporary & Audit Helper Scripts
+audit.py
+audit_meta.py
+add_chatbot_markup.py
+update_footer_contact.py
+
+# OS & System Files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# IDE & Tooling
+.vscode/
+.idea/

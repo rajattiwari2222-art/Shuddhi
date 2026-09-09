@@ -1,4 +1,28 @@
+# Shuddhi Drinkware - Production Robots.txt
+# Allow search-engine crawlers (Googlebot, Bingbot, etc.) to crawl and index the public website
+
 User-agent: *
 Allow: /
+Allow: /index.html
+Allow: /shop.html
+Allow: /product.html
+Allow: /about.html
+Allow: /why-copper.html
+Allow: /sustainability.html
+Allow: /journal.html
+Allow: /contact.html
+Allow: /style.css
+Allow: /script.js
+Allow: /images/
+Allow: /favicon.svg
 
-Sitemap: https://shuddhi.space/sitemap.xml
+# Disallow non-public error pages, administrative paths, and internal scripts
+Disallow: /404.html
+Disallow: /*.py$
+Disallow: /.git/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Official XML Sitemap Reference
+Sitemap: https://www.shuddhi.space/sitemap.xml
