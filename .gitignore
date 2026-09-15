@@ -15,3 +15,6 @@ Thumbs.db
 .idea/
 
 apply_usability_fixes.py
+
+apply_journal_fixes.py
+check_live.py
