@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartItemsContainer.innerHTML = `
           <div style="text-align: center; padding: 2rem 0; color: #777;">
             <p>Your cart is empty.</p>
-            <a href="shop.html" class="btn btn-secondary" style="margin-top: 1rem;">Explore Collection</a>
+            <a href="/shop.html" class="btn btn-secondary" style="margin-top: 1rem;">Explore Collection</a>
           </div>
         `;
       } else {
@@ -440,22 +440,22 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         keywords: ['product', 'what is shuddhi', 'bottle', 'offer', 'collection', 'reusable'],
         response: 'Shuddhi is a lifestyle brand focused on reusable copper drinkware inspired by traditional Indian copper vessels. Our featured flagship product is the Shuddhi Classic Copper Bottle — 1 Litre, priced at ₹799.',
-        links: '<a href="shop.html" class="link-copper">Explore Shop &rarr;</a>'
+        links: '<a href="/shop.html" class="link-copper">Explore Shop &rarr;</a>'
       },
       {
         keywords: ['price', 'cost', 'how much', '₹799', 'rate', 'size', 'capacity', 'litre', '1l', '1 litre'],
         response: 'The Shuddhi Classic Copper Bottle has a capacity of 1 Litre and is priced at ₹799.',
-        links: '<a href="product.html" class="link-copper">View 1L Bottle Details &rarr;</a>'
+        links: '<a href="/product.html" class="link-copper">View 1L Bottle Details &rarr;</a>'
       },
       {
         keywords: ['care', 'clean', 'wash', 'dishwasher', 'tarnish', 'dark', 'color', 'lemon', 'salt', 'maintain', 'store'],
         response: 'Clean your copper bottle regularly using equal parts lemon juice (or vinegar) and table salt. Avoid harsh abrasive cleaners. Do not place the bottle in a dishwasher unless specified.',
-        links: '<a href="why-copper.html" class="link-copper">Read Full Care Guide &rarr;</a>'
+        links: '<a href="/why-copper.html" class="link-copper">Read Full Care Guide &rarr;</a>'
       },
       {
         keywords: ['buy', 'order', 'purchase', 'shipping', 'delivery', 'lucknow', 'express'],
         response: 'You can explore our collection and place an order directly on our website. We provide express dispatches from Central Lucknow across Uttar Pradesh and Pan-India.',
-        links: '<a href="shop.html" class="link-copper">Go to Catalog &rarr;</a>'
+        links: '<a href="/shop.html" class="link-copper">Go to Catalog &rarr;</a>'
       },
       {
         keywords: ['bulk', 'corporate', 'wholesale', 'gift', 'gifting', 'custom', 'engrave'],
