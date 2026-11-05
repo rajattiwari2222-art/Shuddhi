@@ -1,0 +1,11 @@
+ Shuddhi Water Bottle
+> Premium pure copper and 24-hour insulated bottles. Based in Lucknow, India.
+
+## Main Pages
+- [Homepage](https://www.shuddhi.space/): Brand overview and featured products.
+- [Shop](https://www.shuddhi.space/shop.html): Buy pure copper bottles and winter insulated flasks.
+- [About](https://www.shuddhi.space/about.html): Our story and commitment to Ayurvedic wellness.
+
+## Informational Content
+- [Copper Bottle Benefits](https://www.shuddhi.space/copper-bottle-benefits.html): 10 health benefits of drinking from a copper bottle.
+- [Winter Hydration Guide](https://www.shuddhi.space/winter-hot-water-bottle-lucknow.html): How to keep water hot for 24 hours in winter.
