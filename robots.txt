@@ -14,6 +14,7 @@ Allow: /contact.html
 Allow: /style.css
 Allow: /script.js
 Allow: /images/
+Allow: /videos/
 Allow: /favicon.svg
 
 # Disallow non-public error pages, administrative paths, and internal scripts

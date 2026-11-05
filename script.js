@@ -714,5 +714,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+
+  /* --------------------------------------------------------------------------
+     10. PROMOTIONAL BRAND VIDEO PLAYER CONTROLLER
+     -------------------------------------------------------------------------- */
+  const promoVideo = document.getElementById('promoVideo');
+  const videoPlayBtn = document.getElementById('videoPlayBtn');
+  const videoPlayerWrapper = document.getElementById('videoPlayerWrapper');
+
+  if (promoVideo && videoPlayBtn && videoPlayerWrapper) {
+    function startVideoPlayback() {
+      videoPlayerWrapper.classList.add('is-playing');
+      promoVideo.setAttribute('controls', 'true');
+      const playPromise = promoVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.warn('[Shuddhi Video] Playback error or user blocked autoplay:', err);
+        });
+      }
+
+      if (window.ShuddhiAnalytics && typeof window.ShuddhiAnalytics.trackEvent === 'function') {
+        window.ShuddhiAnalytics.trackEvent('VideoWatch', {
+          video_name: 'shuddhi-promo-ad',
+          video_title: 'Experience the Purity of SHUDDHI'
+        });
+      }
+    }
+
+    videoPlayBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      startVideoPlayback();
+    });
+
+    videoPlayerWrapper.addEventListener('click', (e) => {
+      if (!videoPlayerWrapper.classList.contains('is-playing')) {
+        startVideoPlayback();
+      }
+    });
+
+    promoVideo.addEventListener('ended', () => {
+      videoPlayerWrapper.classList.remove('is-playing');
+      promoVideo.removeAttribute('controls');
+      promoVideo.load();
+    });
+  }
 });
 
