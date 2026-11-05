@@ -716,47 +716,61 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     10. PROMOTIONAL BRAND VIDEO PLAYER CONTROLLER
+     10. PROMOTIONAL BRAND VIDEO CONTROLLER (AUTOPLAY LOOP)
      -------------------------------------------------------------------------- */
   const promoVideo = document.getElementById('promoVideo');
-  const videoPlayBtn = document.getElementById('videoPlayBtn');
-  const videoPlayerWrapper = document.getElementById('videoPlayerWrapper');
 
-  if (promoVideo && videoPlayBtn && videoPlayerWrapper) {
-    function startVideoPlayback() {
-      videoPlayerWrapper.classList.add('is-playing');
-      promoVideo.setAttribute('controls', 'true');
+  if (promoVideo) {
+    // Explicitly enforce muted properties in JS for WebKit/iOS and Chrome compliance
+    promoVideo.muted = true;
+    promoVideo.defaultMuted = true;
+    promoVideo.playsInline = true;
+    promoVideo.loop = true;
+
+    function attemptAutoplay() {
       const playPromise = promoVideo.play();
       if (playPromise !== undefined) {
-        playPromise.catch((err) => {
-          console.warn('[Shuddhi Video] Playback error or user blocked autoplay:', err);
-        });
-      }
+        playPromise.catch(() => {
+          // Fallback if device/battery-saver requires initial interaction: play on first scroll or touch
+          const playOnInteraction = () => {
+            promoVideo.muted = true;
+            promoVideo.play().catch(() => {});
+            ['touchstart', 'click', 'scroll'].forEach(evt => {
+              window.removeEventListener(evt, playOnInteraction, { passive: true });
+            });
+          };
 
-      if (window.ShuddhiAnalytics && typeof window.ShuddhiAnalytics.trackEvent === 'function') {
-        window.ShuddhiAnalytics.trackEvent('VideoWatch', {
-          video_name: 'shuddhi-promo-ad',
-          video_title: 'Experience the Purity of SHUDDHI'
+          ['touchstart', 'click', 'scroll'].forEach(evt => {
+            window.addEventListener(evt, playOnInteraction, { passive: true, once: true });
+          });
         });
       }
     }
 
-    videoPlayBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      startVideoPlayback();
-    });
+    // Trigger immediate autoplay on load
+    attemptAutoplay();
 
-    videoPlayerWrapper.addEventListener('click', (e) => {
-      if (!videoPlayerWrapper.classList.contains('is-playing')) {
-        startVideoPlayback();
-      }
-    });
+    // IntersectionObserver: Pause when off-screen to save battery/data, resume when visible
+    if ('IntersectionObserver' in window) {
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (promoVideo.paused) {
+              promoVideo.play().catch(() => {});
+            }
+          } else {
+            if (!promoVideo.paused) {
+              promoVideo.pause();
+            }
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '100px 0px'
+      });
 
-    promoVideo.addEventListener('ended', () => {
-      videoPlayerWrapper.classList.remove('is-playing');
-      promoVideo.removeAttribute('controls');
-      promoVideo.load();
-    });
+      videoObserver.observe(promoVideo);
+    }
   }
 });
 
