@@ -27,7 +27,7 @@ Disallow: /private/
 
 # Official XML Sitemap Reference
 Sitemap: https://www.shuddhi.space/sitemap.xml
-Explicitly Allow AI Search & Citation Bots 
+#Explicitly Allow AI Search & Citation Bots 
 User-agent: OAI-SearchBot
 Allow: /
 
